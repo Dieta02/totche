@@ -1,0 +1,104 @@
+{% extends 'pageBase.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block content %}
+  <div class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-tools"></i>
+                        </div>
+                        <div class="header-title">
+                            <h1>Catégories de Sites Touristiques</h1>
+                            <small>Liste des categories touristiques enregistrés</small>
+                            <ol class="breadcrumb">
+                                <li><a href=index.html><i class="pe-7s-home"></i> Home</a></li>
+                                <li class="active">Catégories</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                   <div class="row">
+                   <div class="col-sm-12">
+                            <div class="panel panel-bd lobidrag">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Enregistrer une Catégorie</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p></p>
+                                     <form method="post" action={{path('app_categories_index')}} class="row" novalidate>
+                                   
+<div class="form-group col-sm-3">
+    <label for="exampleSelect1">Nom</label>
+    {% if category %}
+<input type="text" class="form-control" placeholder="Catégorie" value={{category.name}} name="name" id="categoriesName"/>
+
+    {% else %}
+<input type="text" class="form-control" placeholder="Catégorie" name="name" id="categoriesName"/>
+
+    {% endif %}
+    <small id="emailHelp" class="text-muted">Nom</small>
+</div>
+
+<div class="row col-sm-12" id="button">
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+</div>
+</form>
+
+                                </div>
+                            </div>
+                        </div>
+
+<div class="col-sm-12">
+                            <div class="panel panel-bd lobidrag">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Catégories</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="m-b-15">
+                                        <code></code>.</p>
+                                    <div class="table-responsive">
+                                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                <th>Nom</th>
+                <th style="width:max-content;">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.name }}</td>
+ <td style="display:flex;">
+        
+                   <a  href="{{ path('app_category', {'id': categorie.id}) }}"> <button type="button" class="btn btn-labeled btn-warning">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span>Modifier
+                                    </button> </a>
+                    <form method="post" action="{{ path('app_categories_delete', {'id': categorie.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+   <button  type="submit" class="btn btn-labeled btn-danger">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span>Supprimer
+                                    </button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+   
+{% endblock %}
+

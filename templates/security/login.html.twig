@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Connexion</title>
+        <link rel="shortcut icon" href="../assets/dist/img/ico/favicon.png" type="image/x-icon">
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+        <script>
+            WebFont.load({
+                google: {
+                    families: ['Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i', 'Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i', 'Open Sans']
+                }
+            });
+        </script>
+        <!-- Bootstrap -->
+        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap rtl -->
+        <!--<link href="../assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Pe-icon-7-stroke -->
+        <link href="../assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Theme style -->
+        <link href="../assets/dist/css/component_ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/dist/css/skins/component_ui_white.css" rel="stylesheet" type="text/css"/>
+        <!-- Theme style rtl -->
+        <!--<link href="../assets/dist/css/component_ui_rtl.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Custom css -->
+        <link href="../assets/dist/css/custom.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!-- Content Wrapper -->
+        <div class="register-wrapper ">
+            <div class="container-center">
+                <div class="panel panel-bd">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                            <div class="header-icon">
+                                <i class="pe-7s-pen"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>Connexion</h3>
+                                <small><strong><br> Connectez-vous !</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+ <form method="post" id="loginForm" novalidate>
+                            {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous etes connecté(e) en tant que : {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+    {% endif %}
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                                </div>
+                                <span class="help-block small">Votre adresse Email</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Mot de passe</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    <input   type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="******">
+                                </div>
+                                <span class="help-block small">Votre mot de passe</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary pull-right" type="submit">Connexion</button>
+                                <div class="checkbox checkbox-success">
+                                  
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+                             
+                           </div>
+                              <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+                        </form>
+                    </div>
+                     <div id="bottom_text">
+                    Vous n'avez pas de compte ? <a href={{path('app_register')}}>Inscription</a><br>
+                    <a href="forget_password.html">Mot de passe oublié ?</a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- jQuery -->
+        <script src="../assets/plugins/jQuery/jquery-1.12.4.min.js"></script>
+        <!-- bootstrap js -->
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>
+ 

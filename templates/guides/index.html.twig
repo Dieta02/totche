@@ -1,0 +1,200 @@
+{% extends 'pageBase.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% for message in app.flashes('notification') %}
+             <div class="alert alert-success alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <strong>Success!</strong> {{ message }}
+                                            
+
+</div>
+{% endfor %}
+  <div class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-tools"></i>
+                        </div>
+                        <div class="header-title">
+                            <h1>Guides Touristiques</h1>
+                            <small>Liste des guides touristiques enregistrés</small>
+                            <ol class="breadcrumb">
+                                <li><a href=index.html><i class="pe-7s-home"></i> Home</a></li>
+                                <li class="active">Guides</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                   <div class="row">
+                   <div class="col-sm-12">
+                            <div class="panel panel-success lobidisable">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Enregistrer un Guide Touristique</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p></p>
+                                   <form method="post" action={{path('app_guides_index')}} class="row" enctype="multipart/form-data">
+                                   <div class="col-sm-6">
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Nom</label>
+<input type="text" class="form-control" placeholder="Entrez votre nom " name="name"/>
+    <small id="emailHelp" class="text-muted">Nom</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Prénom(s)</label>
+
+<input type="text" class="form-control" placeholder="Entrez votre prénom(s)" name="surname"/>
+
+    <small id="emailHelp" class="text-muted">prénom(s)</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Numéro de Téléphone</label>
+<input type="tel" class="form-control" placeholder="" name="phoneNumber"/>
+    <small id="emailHelp" class="text-muted">Numéro de Téléphone</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Pays</label>
+    <select class="form-control" id="exampleSelect1" name="countriesId">
+    <option selected disabled>Choissisez un pays</option>
+     {% for country in countries %}
+        <option value={{country.id}}>{{country.name}}</option>
+         {% endfor %}
+    </select>
+    <small id="emailHelp" class="text-muted">Choissisez le pays</small>
+</div>
+ <div class="form-group col-sm-6">
+    <label for="exampleSelect1">Photo du Guide Touristique</label>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-file"></i></span>
+        <input type="file" class="form-control" placeholder="" name="profilPicture"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+    <label for="exampleSelect1">Expériences</label>
+    <div class="input-group">
+        <span class="input-group-addon" ><i class="fa fa-file"></i></span>
+        <input type="file" class="form-control"  name="pictures[]" multiple />
+    </div></div>
+
+</div>
+
+<div class=" row col-sm-6">
+    <div class="col-sm-12">
+     <label for="exampleSelect1">Réseaux Sociaux</label>
+    </div>
+    <div class=" form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #25d366;color: white;"><i class="fa fa-whatsapp"></i></span>
+        <input type="text" class="form-control" placeholder="" name="wa"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+    <div class="input-group">
+        <span class="input-group-addon" style="background: #1877f2;color: white;"><i class="fa fa-facebook"></i></span>
+        <input type="text" class="form-control" placeholder="" name="fb"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #1da1f2;color: white;"><i class="fa fa-twitter"></i></span>
+        <input type="text" class="form-control" placeholder="" name="tw"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #0a66c2;color: white;"><i class="fa fa-linkedin"></i></span>
+        <input type="text" class="form-control" placeholder="" name="in"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #e4405f;color: white;"><i class="fa fa-instagram"></i></span>
+        <input type="text" class="form-control" placeholder="" name="ig"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #0c0b0b;color: white;"><i class="fa fa-tumblr"></i></span>
+        <input type="text" class="form-control" placeholder="" name="tk"/>
+    </div></div>
+</div>
+
+   <div class="col-sm-12">
+    <input type="submit" value="Enregistrer" class="btn btn-success"/>
+</div>
+</div>
+</form>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="col-sm-12">
+                            <div class="panel panel-primary lobidisable">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Guides Touristiques</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="m-b-15">
+                                        <code></code>.</p>
+                                    <div class="table-responsive">
+                                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Pénom(s)</th>
+                <th>Téléphone</th>
+                <th>Pays</th>
+                <th>Socials</th>
+                <th>Expériences</th>
+                <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               {% for guide in guides %}
+            <tr>
+             <td>{{ guide.id }}</td>
+               <td><a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ guide.profilPicture }}>
+               <img src={{ '/uploads/pictures/' ~ guide.profilPicture }} alt="" sizes="100px" style="width:40px;height:40px"></a> </td>
+                <td>{{ guide.name }}</td>
+                <td>{{ guide.surname }}</td>
+                <td>{{ guide.phoneNumber }}</td>
+
+                <td>{{ guide.countriesId }}</td>
+                <td>
+                {% for key,social in guide.socials %}
+                    <a href={{social}} class="fa fa-round"><span id="social" class={{"fa-" ~ key }} style="padding:5px;border-radius:50%"></span></a>
+                {% endfor %}
+                </td>
+                <td>
+                {% for picture in guide.pictures %}
+                <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
+                    <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:25px;height:25px"></a>
+                     {% endfor %}
+                </td>
+                <td style="display:flex;">
+        
+                    <button type="button" onclick="update()" class="btn btn-labeled btn-warning">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span>Modifier 
+                                    </button>
+                    <form method="post" action="{{ path('app_guides_delete', {'id': guide.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ guide.id) }}">
+   <button  type="submit" class="btn btn-labeled btn-danger">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span>Supprimer
+                                    </button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+   
+{% endblock %}

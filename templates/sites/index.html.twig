@@ -1,0 +1,253 @@
+{% extends 'pageBase.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <div class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-tools"></i>
+                        </div>
+                        <div class="header-title">
+                            <h1>sites Touristiques</h1>
+                            <small>Liste des sites touristiques enregistrés</small>
+                            <ol class="breadcrumb">
+                                <li><a href=index.html><i class="pe-7s-home"></i> Home</a></li>
+                                <li class="active">sites</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                   <div class="row">
+                   <div class="col-sm-12">
+                            <div class="panel panel-success lobidisable">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Enregistrer un site Touristique</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p></p>
+                                   <form method="post" action={{path('app_sites_index')}} class="row" enctype="multipart/form-data">
+                                   <div class="col-sm-6">
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Catégorie</label>
+    <select class="form-control" id="exampleSelect1" name="categoriesId">
+    <option selected disabled>Choissisez la categorie</option>
+     {% for categorie in categories %}
+        <option value={{categorie.id}}>{{categorie.name}}</option>
+         {% endfor %}
+    </select>
+    <small id="emailHelp" class="text-muted">Choissisez la catégorie</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Pays</label>
+    <select class="form-control" id="exampleSelect1" name="countriesId">
+    <option selected disabled>Choissisez un pays</option>
+     {% for country in countries %}
+        <option value={{country.id}}>{{country.name}}</option>
+         {% endfor %}
+    </select>
+    <small id="emailHelp" class="text-muted">Choissisez le pays</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Département</label>
+    <select class="form-control" id="exampleSelect1" name="departmentsId">
+    <option selected disabled>Choissisez un departement</option>
+     {% for department in departments %}
+        <option value={{department.id}}>{{department.name}}</option>
+         {% endfor %}
+    </select>
+    <small id="emailHelp" class="text-muted">Choissisez le département</small>
+</div>
+
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Ville</label>
+<input type="text" class="form-control" placeholder="Entrez la ville" name="city"/>
+    <small id="emailHelp" class="text-muted">Ville</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Nom du site touristique</label>
+
+<input type="text" class="form-control" placeholder="Entrez votre prénom(s)" name="name"/>
+
+    <small id="emailHelp" class="text-muted">name</small>
+</div>
+<div class="form-group col-sm-6">
+    <label for="exampleSelect1">Numéro de Téléphone</label>
+<input type="tel" class="form-control" placeholder="" name="phoneNumber"/>
+    <small id="emailHelp" class="text-muted">Numéro de Téléphone</small>
+</div>
+ <div class="form-group col-sm-6">
+    <label for="exampleSelect1">Photos du site Touristique</label>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-file"></i></span>
+        <input type="file" class="form-control" placeholder="" name="pictures[]" multiple/>
+    </div>
+</div>
+</div>
+
+<div class=" row col-sm-6">
+ <div class="form-group col-sm-12">
+    <label for="exampleTextarea">Description</label>
+    <textarea class="form-control" name="description" id="exampleTextarea" rows="3"></textarea>
+</div>
+    <div class="col-sm-12">
+     <label for="exampleSelect1">Réseaux Sociaux</label>
+    </div>
+    <div class=" form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #25d366;color: white;"><i class="fa fa-whatsapp"></i></span>
+        <input type="text" class="form-control" placeholder="" name="wa"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+    <div class="input-group">
+        <span class="input-group-addon" style="background: #1877f2;color: white;"><i class="fa fa-facebook"></i></span>
+        <input type="text" class="form-control" placeholder="" name="fb"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #1da1f2;color: white;"><i class="fa fa-twitter"></i></span>
+        <input type="text" class="form-control" placeholder="" name="tw"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #0a66c2;color: white;"><i class="fa fa-linkedin"></i></span>
+        <input type="text" class="form-control" placeholder="" name="in"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #e4405f;color: white;"><i class="fa fa-instagram"></i></span>
+        <input type="text" class="form-control" placeholder="" name="ig"/>
+    </div></div>
+    <div class="form-group col-sm-6">
+     <div class="input-group">
+        <span class="input-group-addon" style="background: #0c0b0b;color: white;"><i class="fa fa-tumblr"></i></span>
+        <input type="text" class="form-control" placeholder="" name="tk"/>
+    </div></div>
+   
+</div>
+   <div class="col-sm-12">
+    <input type="submit" value="Enregistrer" class="btn btn-success"/>
+</div>
+</div>
+</form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="panel panel-primary lobidisable">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>Sites Touristiques</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="m-b-15">
+                                        <code></code></p>
+                                    <div class="table-responsive">
+                                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th>Catégorie</th>
+                <th>Pays</th>
+                <th>Département</th>
+                <th>Socials</th>
+                <th>Photos</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for site in sites %}
+            <tr>
+                <td>{{ site.id }}</td>
+                <td>{{ site.name }}</td>
+                <td>{{ site.city }}</td>
+                <td>{{ site.phoneNumber }}</td>
+                <td>{{ site.categoriesId }}</td>
+                <td>{{ site.countriesId }}</td>
+                <td>{{ site.departmentsId }}</td>
+                            <td>
+                {% for key,social in site.socials %}
+        <a href={{social}} class="fa fa-round"><span id="social" class={{"fa-" ~ key }} style="padding:5px;border-radius:50%"></span></a>
+                {% endfor %}
+                </td>
+                <td>
+                {% for picture in site.pictures %}
+                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
+
+               <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:40px;height:40px"></a>
+                {% endfor %}
+                </td>
+                <td style="display:flex;">
+                    <button class="btn btn-labeled btn-primary md-trigger" data-modal="modal-12"><span class="btn-label"><i class="glyphicon glyphicon-eye-open"></i></span>Détails</button>
+                   <a onclick=""> <button type="button" class="btn btn-labeled btn-warning">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span>Modifier
+                                    </button></a>
+                    <form method="post" action="{{ path('app_sites_delete', {'id': site.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ site.id) }}">
+   <button  type="submit" class="btn btn-labeled btn-danger">
+                                        <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span>Supprimer
+                                    </button>
+</form>
+                </td>
+            </tr>
+            <div class="md-modal md-effect-12" id="modal-12">
+            
+                                                    <div class="md-content">
+                                                        <h3>{{site.name}}</h3>
+                                                        <div class="n-modal-body row">
+                                                            <div class="col-sm-12 text-center"> <p>{{site.description}}</p></div>
+                                                            <div class="col-sm-12">
+                                                            <div class="col-sm-6">
+                                                            <strong>Pays :</strong><span>{{site.countriesId}}</span><br>
+                                                            <strong>Département :</strong><span>{{site.departmentsId}}</span><br>
+                                                            <strong>Ville :</strong><span>{{site.city}}</span>
+
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            <strong>Catégorie :</strong><span>{{site.categoriesId}}</span><br>
+                                                            <strong>Téléphone :</strong><span>{{site.phoneNumber}}</span><br>
+                                                    </div>
+                                                            
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-12 m-2 text-center">
+                                                            {% for picture in site.pictures %}
+                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
+
+               <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:40px;height:40px"></a>
+                {% endfor %}
+                                                            </div>
+                                                            </hr>
+                                                            <div class="col-sm-12 m-2 text-center">
+                                                        
+                                                             {% for key,social in site.socials %}
+        <a href={{social}} class="fa fa-round"><span id="social" class={{"fa-" ~ key }} style="padding:5px;border-radius:50%"></span></a>
+                {% endfor %}
+                                                            </div>
+
+                                                            <button class="btn btn-success md-close">Close me!</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="md-overlay"></div>
+            {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+       
+        {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+
+{% endblock %}

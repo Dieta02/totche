@@ -1,0 +1,65 @@
+{% extends 'pageBase.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block content %}
+  <div class="content-header">
+                        <div class="header-icon">
+                            <i class="pe-7s-tools"></i>
+                        </div>
+                        <div class="header-title">
+                            <h1>Pays et Départements</h1>
+                            <small>Liste des pays et Départements enregistrés</small>
+                            <ol class="breadcrumb">
+                                <li><a href=index.html><i class="pe-7s-home"></i> Home</a></li>
+                                <li class="active">Catégories</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                   <div class="row">
+                                               {% for country in countries %}
+
+<div class="col-sm-12">
+                            <div class="panel panel-bd lobidrag">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <h4>{{country.name}}</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="m-b-15">
+                                        <code></code>.</p>
+                                    <div class="table-responsive">
+                                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               {% for department in departments %}
+            <tr>
+                <td>{{ department.id }}</td>
+                <td>{{ department.name }}</td>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     {% endfor %}    
+                   </div>
+   
+{% endblock %}
+
+
