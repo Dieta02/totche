@@ -1,0 +1,37 @@
+ 
+ .fa-round{
+     font-size: 15px;
+     width: 30px;
+    height: 30px;
+     text-align: center;
+     text-decoration: none;
+ }
+/*rounded/* Style all font awesome icons 
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+*/
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook{
+background: #1877f2;
+    color: white;
+}
+.fa-instagram {
+background: #e4405f;
+    color: white;
+    }
+.fa-linkedin {background: #0a66c2;
+    color: white;}
+.fa-whatsapp {background: #25d366;
+    color: white;}
+.fa-twitter {background: #1da1f2;
+    color: white;}
+.fa-tumblr {background: #0c0b0b;
+    color: white;}
