@@ -1,0 +1,175 @@
+{% extends 'frontBase.html.twig' %}
+{% block main %}
+<main class="main food3-shop">
+            <div class="page-header"
+                style="background-image: url('../front/images/demos/demo-food3/food3-shop/Category-banner.jpg'); background-color: #231e19; height: 40rem;">
+                <h1 class="page-title text-white font-weight-normal text-uppercase font-secondary ls-m">{{category}}</h1>
+                <ul class="breadcrumb pt-1">
+                    <li><a href={{path('app_home')}} title="breadcrumb"><i class="d-icon-home"></i></a>
+                    </li>
+                    <li class="font-weight-semi-bold mr-1 ml-1" style="opacity: .4;"><i class="d-icon-angle-right"></i>
+                    </li>
+                    <li style="opacity: .6;">Catégories</li>
+                    <li class="font-weight-semi-bold mr-1 ml-1" style="opacity: .4;"><i class="d-icon-angle-right"></i>
+                    </li>
+                    <li style="opacity: .6;">{{category}}</li>
+                </ul>
+            </div>
+            <div class="page-content mb-10 pb-3">
+                <div class="container">
+                    <nav class="toolbox toolbox-horizontal sticky-toolbox sticky-content fix-top">
+                        <aside class="sidebar sidebar-fixed shop-sidebar" >
+                            <div class="sidebar-overlay"></div>
+                            <a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+                            <div class="sidebar-content toolbox-left" style="background-color:white">
+                                <div class="toolbox-item select-menu">
+                                    <a class="select-menu-toggle" href="#">Select Size</a>
+                                    <ul class="filter-items">
+                                        <li><a href="#">Extra Large</a></li>
+                                        <li><a href="#">Large</a></li>
+                                        <li><a href="#">Medium</a></li>
+                                        <li><a href="#">Small</a></li>
+                                    </ul>
+                                </div>
+                                <div class="toolbox-item select-menu">
+                                    <a class="select-menu-toggle" href="#">Select Color</a>
+                                    <ul class="filter-items">
+                                        <li><a href="#">Black</a></li>
+                                        <li><a href="#">Blue</a></li>
+                                        <li><a href="#">Brown</a></li>
+                                        <li><a href="#">Green</a></li>
+                                    </ul>
+                                </div>
+                                <div class="toolbox-item select-menu">
+                                    <a class="select-menu-toggle" href="#">Select Price</a>
+                                    <ul class="filter-items filter-price">
+                                        <li><a href="#">$0.00 - $50.00</a></li>
+                                        <li><a href="#">$50.00 - $100.00</a></li>
+                                        <li><a href="#">$100.00 - $200.00</a></li>
+                                        <li><a href="#">$200.00+</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="toolbox-left">
+                            <a href="#"
+                                class="toolbox-item left-sidebar-toggle btn btn-sm btn-outline btn-primary btn-rounded btn-icon-right d-lg-none">
+                                Filter<i class="d-icon-arrow-right"></i></a>
+                            <div class="toolbox-item toolbox-sort select-menu">
+                                <select name="orderby" class="form-control">
+                                    <option value="default" selected="selected">Default Sorting</option>
+                                    <option value="popularity">Most Popular</option>
+                                    <option value="rating">Average rating</option>
+                                    <option value="date">Latest</option>
+                                    <option value="price-low">Sort forward price low</option>
+                                    <option value="price-high">Sort forward price high</option>
+                                    <option value="">Clear custom sort</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="toolbox-right">
+                            <div class="toolbox-item toolbox-show select-box mr-sm-3">
+                                <label>show :</label>
+                                <select name="count" class="form-control">
+                                    <option value="12">12</option>
+                                    <option value="24">24</option>
+                                    <option value="36">36</option>
+                                </select>
+                            </div>
+                            <div class="toolbox-item toolbox-layout">
+                                <a href="shop-list-mode.html" class="d-icon-mode-list btn-layout"></a>
+                                <a href="shop.html" class="d-icon-mode-grid btn-layout active"></a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="select-items">
+                        <a href="#" class="filter-clean text-primary">Clean All</a>
+                    </div>
+                    <div class="row cols-lg-4 cols-md-3 cols-2">
+                    {% for site in sites %}
+                        <div class="product text-center product-with-qty">
+                            <figure class="product-media">
+                                <a href={{path('app_siteView',{'category':category,'id':site.id})}}>
+                                    <img src={{ '/uploads/pictures/sites/' ~ site.pictures[0] }} alt="product"
+                                         style="width:300px;height:236px">
+                                    <img src={{ '/uploads/pictures/sites/' ~ site.pictures[0] }} alt="product"
+                                        style="width:300px;height:236px">
+                                </a>
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                            class="d-icon-heart"></i></a>
+                                </div>
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-quickview" title="Quick View">Aperçu Rapide</a>
+                                </div>
+                            </figure>
+                            <div class="product-details">
+                                <h3 class="product-name">
+                                    <a href={{path('app_siteView',{'category':category,'id':site.id})}} class="text-uppercase">{{site.name}}</a>
+                                </h3>
+                                <div class="product-price">
+                                    <ins class="new-price">{{site.city}}</ins><del class="old-price"></del>
+                                </div>
+                                <div class="ratings-container">
+                                    <div class="ratings-full">
+                                        <span class="ratings" style="width: 100%"></span>
+                                        <span class="tooltiptext tooltip-top"></span>
+                                    </div>
+                                    <a href={{path('app_siteView',{'category':category,'id':site.id})}} class="rating-reviews">( 12 reviews )</a>
+                                </div>
+                                <div class="product-action">
+                                    <!--div class="product-quantity">
+                                        <button title="calculate" class="quantity-minus d-icon-minus"></button>
+                                        <input title="input" class="quantity form-control" type="number" min="1"
+                                            max="1000000">
+                                        <button title="calculate" class="quantity-plus d-icon-plus"></button>
+                                    </!--div-->
+                                    <div
+                                            class="product-action feeling">
+                                            <button class="btn btn-link btn-icon-left btn-slide-up btn-infinite like mr-2">
+                                                <i class="fa fa-thumbs-up"></i>
+                                               
+                                                (<span class="count">0</span>)
+                                            </button>
+                                            <button class="btn btn-link btn-icon-left btn-slide-down btn-infinite unlike">
+                                                <i class="fa fa-thumbs-down"></i>
+                                                
+                                                (<span class="count">0</span>)
+                                            </button>
+                                        </div>
+                                    <a href="#" class=" ml-4 btn-product btn-cart" data-toggle="modal"
+                                        data-target="#addCartModal" title="Add to cart"><i
+                                            class="d-icon-bag"></i><span>Panier</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <nav class="toolbox toolbox-pagination border-no mt-8 mb-1">
+                        <p class="toolbox-item font-weight-semi-bold show-info d-block">Showing <span class="m-0">9 of
+                                56</span>
+                            Products</p>
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
+                                    aria-disabled="true">
+                                    <i class="d-icon-arrow-left"></i>Prev
+                                </a>
+                            </li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item page-item-dots"><a class="page-link" href="#">6</a></li>
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="#" aria-label="Next">
+                                    Next<i class="d-icon-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+        </main>
+{% endblock %}

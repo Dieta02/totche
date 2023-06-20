@@ -31,13 +31,9 @@
                                    
 <div class="form-group col-sm-3">
     <label for="exampleSelect1">Nom</label>
-    {% if category %}
-<input type="text" class="form-control" placeholder="Catégorie" value={{category.name}} name="name" id="categoriesName"/>
-
-    {% else %}
 <input type="text" class="form-control" placeholder="Catégorie" name="name" id="categoriesName"/>
 
-    {% endif %}
+
     <small id="emailHelp" class="text-muted">Nom</small>
 </div>
 
@@ -76,7 +72,7 @@
                 <td>{{ categorie.name }}</td>
  <td style="display:flex;">
         
-                   <a  href="{{ path('app_category', {'id': categorie.id}) }}"> <button type="button" class="btn btn-labeled btn-warning">
+                   <a  href="{{ path('app_categories_edit', {'id': categorie.id}) }}"> <button type="button" class="btn btn-labeled btn-warning">
                                         <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span>Modifier
                                     </button> </a>
                     <form method="post" action="{{ path('app_categories_delete', {'id': categorie.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">

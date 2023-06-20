@@ -178,9 +178,9 @@
                 </td>
                 <td>
                 {% for picture in site.pictures %}
-                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
+                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/sites/' ~ picture }}>
 
-               <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:40px;height:40px"></a>
+               <img src={{ '/uploads/pictures/sites/' ~ picture }} alt="" sizes="" style="width:40px;height:40px"></a>
                 {% endfor %}
                 </td>
                 <td style="display:flex;">
@@ -218,7 +218,7 @@
                                                             
                                                             <div class="col-sm-12 m-2 text-center">
                                                             {% for picture in site.pictures %}
-                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
+                 <a data-lightbox="portfolio" href={{ '/uploads/pictures/sites/' ~ picture }}>
 
                <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:40px;height:40px"></a>
                 {% endfor %}

@@ -35,7 +35,7 @@ class Sites
     #[ORM\Column(nullable: true)]
     private ?int $visits = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?int $phoneNumber = null;
 
     #[ORM\Column(nullable: true)]
@@ -49,6 +49,12 @@ class Sites
 
     #[ORM\Column]
     private ?int $departmentsId = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $likes = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $unlikes = null;
 
     public function getId(): ?int
     {
@@ -197,6 +203,30 @@ class Sites
     public function setDepartmentsId(int $departmentsId): self
     {
         $this->departmentsId = $departmentsId;
+
+        return $this;
+    }
+
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(?int $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+
+    public function getUnlikes(): ?int
+    {
+        return $this->unlikes;
+    }
+
+    public function setUnlikes(?int $unlikes): self
+    {
+        $this->unlikes = $unlikes;
 
         return $this;
     }

@@ -153,8 +153,8 @@
                                                {% for guide in guides %}
             <tr>
              <td>{{ guide.id }}</td>
-               <td><a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ guide.profilPicture }}>
-               <img src={{ '/uploads/pictures/' ~ guide.profilPicture }} alt="" sizes="100px" style="width:40px;height:40px"></a> </td>
+               <td><a data-lightbox="portfolio" href={{ '/uploads/pictures/guides/' ~ guide.profilPicture }}>
+               <img src={{ '/uploads/pictures/guides/' ~ guide.profilPicture }} alt="" sizes="100px" style="width:40px;height:40px"></a> </td>
                 <td>{{ guide.name }}</td>
                 <td>{{ guide.surname }}</td>
                 <td>{{ guide.phoneNumber }}</td>
@@ -167,8 +167,8 @@
                 </td>
                 <td>
                 {% for picture in guide.pictures %}
-                <a data-lightbox="portfolio" href={{ '/uploads/pictures/' ~ picture }}>
-                    <img src={{ '/uploads/pictures/' ~ picture }} alt="" sizes="" style="width:25px;height:25px"></a>
+                <a data-lightbox="portfolio" href={{ '/uploads/pictures/guides/' ~ picture }}>
+                    <img src={{ '/uploads/pictures/guides/' ~ picture }} alt="" sizes="" style="width:25px;height:25px"></a>
                      {% endfor %}
                 </td>
                 <td style="display:flex;">

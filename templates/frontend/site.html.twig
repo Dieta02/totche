@@ -1,0 +1,1442 @@
+{% extends 'frontBase.html.twig' %}
+{% block main %}
+ <main class="main home">
+                <div class="page-content mb-10 pb-6">
+                    <div class="container">
+                        <div class="product product-single row">
+                            <div class="col-md-6">
+                                <div class="product-gallery row">
+                                {% for picture in site.pictures %}
+                                    <figure class="product-image mb-4">
+                                        <img
+                                            src={{ '/uploads/pictures/sites/' ~ picture }}
+                                            data-zoom-image={{ '/uploads/pictures/sites/' ~ picture }}
+                                            style="width:800px;height:600px"
+                                            alt="picture">
+                                        <a href={{ '/uploads/pictures/sites/' ~ picture }} data-lightbox="portfolio" class="product-image-full"><i
+                                                class="d-icon-zoom"></i></a>
+                                    </figure>
+                                {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6 sticky-sidebar-wrapper">
+                                <div class="product-details sticky-sidebar">
+                                    <div class="product-navigation">
+                                        <ul class="breadcrumb breadcrumb-lg">
+                                            <li><a href={{path('app_home')}}>Home</a></li>
+                                            <li><a href={{path('app_categorySites',{'category': category})}}
+                                                    class="active">{{category}}</a></li>
+                                                    <li><a
+                                                    class="active">{{site.name}}</a></li>
+                                            <li>Sticky</li>
+                                        </ul>
+
+                                        <ul class="product-nav">
+                                            <li class="product-nav-prev">
+                                                <a href="#">
+                                                    <i
+                                                        class="d-icon-arrow-left"></i>
+                                                    Prev
+                                                    <span
+                                                        class="product-nav-popup">
+                                                        <img
+                                                            src="../front/images/demos/demo-food3/product/1-280x220.jpg"
+                                                            alt="product
+                                                            thumbnail"
+                                                            width="280"
+                                                            height="220">
+                                                        <span
+                                                            class="product-name">
+                                                            {{site.name}}
+                                                           </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="product-nav-next">
+                                                <a href="#">
+                                                    Next <i
+                                                        class="d-icon-arrow-right"></i>
+                                                    <span
+                                                        class="product-nav-popup">
+                                                        <img
+                                                            src="../front/images/demos/demo-food3/product/2-280x220.jpg"
+                                                            alt="product
+                                                            thumbnail"
+                                                            width="280"
+                                                            height="220">
+                                                        <span
+                                                            class="product-name">{{site.name}}</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <h1 class="product-name text-black text-uppercase">{{site.name}}</h1>
+                                    <!--div class="product-price"><ins
+                                            class="new-price">$46.00</ins><del
+                                            class="old-price">$68.00</del></!--div-->
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings"
+                                                style="width:100%"></span>
+                                            <span class="tooltiptext
+                                                tooltip-top"></span>
+                                        </div>
+                                        <a href="#product-tab-reviews"
+                                            class="link-to-tab rating-reviews">(
+                                            4 reviews )</a>
+                                    </div>
+                                    <p class="product-short-desc mb-6">{{site.city}}</p>
+                                    <div class="product-form product-qty mb-3">
+                                        <div class="product-form-group">
+                                            <!--div class="input-group mr-2">
+                                                <button class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input class="quantity
+                                                    form-control" type="number"
+                                                    min="1" max="1000000">
+                                                <button class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </!--div-->
+                                            <button
+                                                class="btn-product btn-cart
+                                                text-normal ls-normal
+                                                font-weight-semi-bold"><i
+                                                    class="d-icon-bag"></i>Panier</button>
+                                        </div>
+                                    </div>
+                                    <div class="product-footer">
+                                        <div class="social-links mr-4">
+                                         {% if site.socials is empty %}
+                   <div></div> 
+                    {% else %}
+                                            <a
+                                                href="#"
+                                                title="social-link"
+                                                style="border-color:white"
+                                                class="social-link social-whatsapp fab fa-whatsapp"
+                                            ></a>
+                                            <a
+                                                href="#"
+                                                title="social-link"
+                                                style="border-color:white"
+                                                class="social-link social-instagram fab fa-instagram"
+                                            ></a>
+                                            <a
+                                                href="#"
+                                                title="social-link"
+                                                style="border-color:white"
+                                                class="social-link social-facebook fab fa-facebook-f"
+                                            ></a>
+                                            <a
+                                                href="#"
+                                                title="social-link"
+                                                style="border-color:white"
+                                                class="social-link social-twitter fab fa-twitter"
+                                            ></a>
+                                            <a
+                                                href="#"
+                                                title="social-link"
+                                                style="border-color:white"
+
+                                                class="social-link social-linkedin fab fa-linkedin-in"
+                                            ></a>
+                                        {% endif %}
+                                        <span class="divider d-lg-show"></span>
+                                        <div
+                                            class="product-action feeling">
+                                            <button class="btn btn-link btn-icon-left btn-slide-up btn-infinite like mr-2">
+                                                <i class="fa fa-thumbs-up"></i>
+                                                Like
+                                                (<span class="count">0</span>)
+                                            </button>
+                                            <button class="btn btn-link btn-icon-left btn-slide-down btn-infinite unlike">
+                                                <i class="fa fa-thumbs-down"></i>
+                                                Unlike
+                                                (<span class="count">0</span>)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion accordion-simple">
+                                        <div class="card border-no
+                                            card-description">
+                                            <div class="card-header">
+                                                <a href="#collapse1-1"
+                                                    class="collapse pt-4 pb-4"><span>Description</span></a>
+                                            </div>
+                                            <div id="collapse1-1"
+                                                class="card-body expanded pl-0">
+                                                <div class="row">
+                                                    <div class="col-12 mb-3">
+                                                        <p class="mb-4">
+                                                            {{site.description}}
+                                                        </p>
+                                                        <!--p class="mb-0 text-grey
+                                                            font-weight-semi-bold">More
+                                                            Details</!--p>
+                                                        <ul class="mb-6 mt-1">
+                                                            <li>Praesent id enim
+                                                                sit amet.</li>
+                                                            <li>Tdio vulputate
+                                                                eleifend in in
+                                                                tortor. ellus
+                                                                massa.Dristique
+                                                                sitiismonec.</li>
+                                                            <li>Massa ristique
+                                                                sit amet condim
+                                                                vel, facilisis
+                                                                quimequistiqutiqu
+                                                                amet condim</li>
+                                                            <li>Dilisis
+                                                                Facilisis quis
+                                                                sapien. Praesent
+                                                                id enim sit amet
+                                                            </li>
+                                                        </ul>
+                                                        <p-- class="mb-0">
+                                                            Praesent id enim sit
+                                                            amet odio vulputate
+                                                            eleifend in in
+                                                            tortor.
+                                                            Sellus maseleifend
+                                                            in in tortor. Sellus
+                                                            massa, tristique
+                                                            sitiismo sapien.
+                                                        </p-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card card-additional">
+                                            <div class="card-header">
+                                                <a href="#collapse1-2"
+                                                    class="expand"><span>Coordonnées</span></a>
+                                            </div>
+                                            <div class="card-body collapsed"
+                                                id="collapse1-2">
+                                                <ul class="list-none">
+                                                    <li><label>Brands:</label>
+                                                        <p>SkillStar, SLS</p>
+                                                    </li>
+                                                    <li><label>Color:</label>
+                                                        <p>Blue, Brown</p>
+                                                    </li>
+                                                    <li><label>Size:</label>
+                                                        <p>Large, Medium, Small</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--div class="card card-sizeguide">
+                                            <div class="card-header">
+                                                <a href="#collapse1-3"
+                                                    class="expand">Size Guide</a>
+                                            </div>
+                                            <div class="card-body collapsed"
+                                                id="collapse1-3">
+                                                <figure class="size-image mt-4
+                                                    mb-4">
+                                                    <img
+                                                        src="../front/images/product/size_guide.png"
+                                                        alt="Size Guide Image"
+                                                        width="217"
+                                                        height="398">
+                                                </figure>
+                                                <figure class="size-table mt-4
+                                                    mb-4">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>SIZE</th>
+                                                                <th>CHEST(IN.)</th>
+                                                                <th>WEIST(IN.)</th>
+                                                                <th>HIPS(IN.)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>XS</th>
+                                                                <td>34-36</td>
+                                                                <td>27-29</td>
+                                                                <td>34.5-36.5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>S</th>
+                                                                <td>36-38</td>
+                                                                <td>29-31</td>
+                                                                <td>36.5-38.5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>M</th>
+                                                                <td>38-40</td>
+                                                                <td>31-33</td>
+                                                                <td>38.5-40.5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>L</th>
+                                                                <td>40-42</td>
+                                                                <td>33-36</td>
+                                                                <td>40.5-43.5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>XL</th>
+                                                                <td>42-45</td>
+                                                                <td>36-40</td>
+                                                                <td>43.5-47.5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>XXL</th>
+                                                                <td>45-48</td>
+                                                                <td>40-44</td>
+                                                                <td>47.5-51.5</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </figure>
+                                            </div>
+                                        </!--div-->
+                                        <div class="card card-reviews">
+                                            <div class="card-header">
+                                                <a href="#collapse1-4"
+                                                    class="expand"><span
+                                                        class="">Avis et Commentaires</span></a>
+                                            </div>
+                                            <div class="card-body collapsed"
+                                                id="collapse1-4">
+                                                <div class="row">
+                                                    <div class="col-12 mb-6">
+                                                        <div
+                                                            class="avg-rating-container">
+                                                            <mark>5.0</mark>
+                                                            <div
+                                                                class="avg-rating">
+                                                                <span
+                                                                    class="avg-rating-title">Average
+                                                                    Rating</span>
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:100%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top"></span>
+                                                                    </div>
+                                                                    <span
+                                                                        class="rating-reviews">(2
+                                                                        Reviews)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-list
+                                                            mb-2">
+                                                            <div
+                                                                class="ratings-item">
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:100%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-percent">
+                                                                    <span
+                                                                        style="width:100%;"></span>
+                                                                </div>
+                                                                <div
+                                                                    class="progress-value">100%</div>
+                                                            </div>
+                                                            <div
+                                                                class="ratings-item">
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:80%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top">4.00</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-percent">
+                                                                    <span
+                                                                        style="width:0%;"></span>
+                                                                </div>
+                                                                <div
+                                                                    class="progress-value">0%</div>
+                                                            </div>
+                                                            <div
+                                                                class="ratings-item">
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:60%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top">4.00</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-percent">
+                                                                    <span
+                                                                        style="width:0%;"></span>
+                                                                </div>
+                                                                <div
+                                                                    class="progress-value">0%</div>
+                                                            </div>
+                                                            <div
+                                                                class="ratings-item">
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:40%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top">4.00</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-percent">
+                                                                    <span
+                                                                        style="width:0%;"></span>
+                                                                </div>
+                                                                <div
+                                                                    class="progress-value">0%</div>
+                                                            </div>
+                                                            <div
+                                                                class="ratings-item">
+                                                                <div
+                                                                    class="ratings-container
+                                                                    mb-0">
+                                                                    <div
+                                                                        class="ratings-full">
+                                                                        <span
+                                                                            class="ratings"
+                                                                            style="width:20%"></span>
+                                                                        <span
+                                                                            class="tooltiptext
+                                                                            tooltip-top">4.00</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-percent">
+                                                                    <span
+                                                                        style="width:0%;"></span>
+                                                                </div>
+                                                                <div
+                                                                    class="progress-value">0%</div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="btn
+                                                            btn-primary
+                                                            submit-review-toggle"
+                                                            href="#">Submit
+                                                            Review</a>
+                                                    </div>
+                                                    <div class="col-12 comments
+                                                        pt-2 pb-10 border-no">
+                                                        <nav class="toolbox">
+                                                            <div
+                                                                class="toolbox-left">
+                                                                <div
+                                                                    class="toolbox-item">
+                                                                    <a href="#"
+                                                                        class="btn
+                                                                        btn-outline
+                                                                        btn-rounded">All
+                                                                        Reviews</a>
+                                                                </div>
+                                                                <div
+                                                                    class="toolbox-item">
+                                                                    <a href="#"
+                                                                        class="btn
+                                                                        btn-outline
+                                                                        btn-rounded">With
+                                                                        Images</a>
+                                                                </div>
+                                                                <div
+                                                                    class="toolbox-item">
+                                                                    <a href="#"
+                                                                        class="btn
+                                                                        btn-outline
+                                                                        btn-rounded">With
+                                                                        Videos</a>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="toolbox-right">
+                                                                <div
+                                                                    class="toolbox-item
+                                                                    toolbox-sort
+                                                                    select-box
+                                                                    text-dark">
+                                                                    <label>Sort
+                                                                        By :</label>
+                                                                    <select
+                                                                        name="orderby"
+                                                                        class="form-control">
+                                                                        <option
+                                                                            value="">Default
+                                                                            Order</option>
+                                                                        <option
+                                                                            value="newest"
+                                                                            selected="selected">Newest
+                                                                            Reviews
+                                                                        </option>
+                                                                        <option
+                                                                            value="oldest">Oldest
+                                                                            Reviews</option>
+                                                                        <option
+                                                                            value="high_rate">Highest
+                                                                            Rating</option>
+                                                                        <option
+                                                                            value="low_rate">Lowest
+                                                                            Rating</option>
+                                                                        <option
+                                                                            value="most_likely">Most
+                                                                            Likely</option>
+                                                                        <option
+                                                                            value="most_unlikely">Most
+                                                                            Unlikely</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </nav>
+                                                        <ul
+                                                            class="comments-list">
+                                                            <li>
+                                                                <div
+                                                                    class="comment">
+                                                                    <figure
+                                                                        class="comment-media">
+                                                                        <a
+                                                                            href="#">
+                                                                            <img
+                                                                                src="../front/images/blog/comments/1.jpg"
+                                                                                alt="avatar">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div
+                                                                        class="comment-body">
+                                                                        <div
+                                                                            class="comment-rating
+                                                                            ratings-container">
+                                                                            <div
+                                                                                class="ratings-full">
+                                                                                <span
+                                                                                    class="ratings"
+                                                                                    style="width:100%"></span>
+                                                                                <span
+                                                                                    class="tooltiptext
+                                                                                    tooltip-top"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="comment-user">
+                                                                            <span
+                                                                                class="comment-date">by
+                                                                                <span
+                                                                                    class="font-weight-semi-bold
+                                                                                    text-uppercase
+                                                                                    text-dark">John
+                                                                                    Doe</span>
+                                                                                on
+                                                                                <span
+                                                                                    class="font-weight-semi-bold
+                                                                                    text-dark">Nov
+                                                                                    22,
+                                                                                    2018</span></span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="comment-content
+                                                                            mb-5">
+                                                                            <p>Sed
+                                                                                pretium,
+                                                                                ligula
+                                                                                sollicitudin
+                                                                                laoreet
+                                                                                viverra,
+                                                                                tortor
+                                                                                libero
+                                                                                sodales
+                                                                                leo,
+                                                                                eget
+                                                                                blandit
+                                                                                nunc
+                                                                                tortor
+                                                                                eu
+                                                                                nibh.
+                                                                                Nullam
+                                                                                mollis.
+                                                                                Ut
+                                                                                justo.
+                                                                                Suspendisse
+                                                                                potenti.
+                                                                                Sed
+                                                                                egestas,
+                                                                                ante
+                                                                                et
+                                                                                vulputate
+                                                                                volutpat,
+                                                                                eros
+                                                                                pede
+                                                                                semper
+                                                                                est,
+                                                                                vitae
+                                                                                luctus
+                                                                                metus
+                                                                                libero
+                                                                                eu
+                                                                                augue.</p>
+                                                                        </div>
+                                                                        <div
+                                                                            class="file-input-wrappers">
+                                                                            <img
+                                                                                class="btn-play
+                                                                                btn-img
+                                                                                pwsp"
+                                                                                src="../front/images/products/product1.jpg"
+                                                                                width="280"
+                                                                                height="315"
+                                                                                alt="product"
+                                                                                />
+                                                                            <img
+                                                                                class="btn-play
+                                                                                btn-img
+                                                                                pwsp"
+                                                                                src="../front/images/products/product3.jpg"
+                                                                                width="280"
+                                                                                height="315"
+                                                                                alt="product"
+                                                                                />
+                                                                            <a
+                                                                                class="btn-play
+                                                                                btn-iframe"
+                                                                                style="background-image:
+                                                                                url(../front/images/product/product.jpg);background-size:
+                                                                                cover;"
+                                                                                href="video/memory-of-a-woman.mp4">
+                                                                                <i
+                                                                                    class="d-icon-play-solid"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="feeling
+                                                                            mt-5">
+                                                                            <button
+                                                                                class="btn
+                                                                                btn-link
+                                                                                btn-icon-left
+                                                                                btn-slide-up
+                                                                                btn-infinite
+                                                                                like
+                                                                                mr-2">
+                                                                                <i
+                                                                                    class="fa
+                                                                                    fa-thumbs-up"></i>
+                                                                                Like
+                                                                                (<span
+                                                                                    class="count">0</span>)
+                                                                            </button>
+                                                                            <button
+                                                                                class="btn
+                                                                                btn-link
+                                                                                btn-icon-left
+                                                                                btn-slide-down
+                                                                                btn-infinite
+                                                                                unlike">
+                                                                                <i
+                                                                                    class="fa
+                                                                                    fa-thumbs-down"></i>
+                                                                                Unlike
+                                                                                (<span
+                                                                                    class="count">0</span>)
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div
+                                                                    class="comment">
+                                                                    <figure
+                                                                        class="comment-media">
+                                                                        <a
+                                                                            href="#">
+                                                                            <img
+                                                                                src="../front/images/blog/comments/2.jpg"
+                                                                                alt="avatar">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div
+                                                                        class="comment-body">
+                                                                        <div
+                                                                            class="comment-rating
+                                                                            ratings-container">
+                                                                            <div
+                                                                                class="ratings-full">
+                                                                                <span
+                                                                                    class="ratings"
+                                                                                    style="width:100%"></span>
+                                                                                <span
+                                                                                    class="tooltiptext
+                                                                                    tooltip-top"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="comment-user">
+                                                                            <span
+                                                                                class="comment-date">by
+                                                                                <span
+                                                                                    class="font-weight-semi-bold
+                                                                                    text-uppercase
+                                                                                    text-dark">John
+                                                                                    Doe</span>
+                                                                                on
+                                                                                <span
+                                                                                    class="font-weight-semi-bold
+                                                                                    text-dark">Nov
+                                                                                    22,
+                                                                                    2018</span></span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="comment-content">
+                                                                            <p>Sed
+                                                                                pretium,
+                                                                                ligula
+                                                                                sollicitudin
+                                                                                laoreet
+                                                                                viverra,
+                                                                                tortor
+                                                                                libero
+                                                                                sodales
+                                                                                leo,
+                                                                                eget
+                                                                                blandit
+                                                                                nunc
+                                                                                tortor
+                                                                                eu
+                                                                                nibh.
+                                                                                Nullam
+                                                                                mollis.
+                                                                                Ut
+                                                                                justo.
+                                                                                Suspendisse
+                                                                                potenti.
+                                                                                Sed
+                                                                                egestas,
+                                                                                ante
+                                                                                et
+                                                                                vulputate
+                                                                                volutpat,
+                                                                                eros
+                                                                                pede
+                                                                                semper
+                                                                                est,
+                                                                                vitae
+                                                                                luctus
+                                                                                metus
+                                                                                libero
+                                                                                eu
+                                                                                augue.
+                                                                                Morbi
+                                                                                purus
+                                                                                libero,
+                                                                                faucibus
+                                                                                adipiscing,
+                                                                                commodo
+                                                                                quis,
+                                                                                avida
+                                                                                id,
+                                                                                est.
+                                                                                Sed
+                                                                                lectus.
+                                                                                Praesent
+                                                                                elementum
+                                                                                hendrerit
+                                                                                tortor.
+                                                                                Sed
+                                                                                semper
+                                                                                lorem
+                                                                                at
+                                                                                felis.
+                                                                                Vestibulum
+                                                                                volutpat.</p>
+                                                                        </div>
+                                                                        <div
+                                                                            class="feeling
+                                                                            mt-5">
+                                                                            <button
+                                                                                class="btn
+                                                                                btn-link
+                                                                                btn-icon-left
+                                                                                btn-slide-up
+                                                                                btn-infinite
+                                                                                like
+                                                                                mr-2">
+                                                                                <i
+                                                                                    class="fa
+                                                                                    fa-thumbs-up"></i>
+                                                                                Like
+                                                                                (<span
+                                                                                    class="count">0</span>)
+                                                                            </button>
+                                                                            <button
+                                                                                class="btn
+                                                                                btn-link
+                                                                                btn-icon-left
+                                                                                btn-slide-down
+                                                                                btn-infinite
+                                                                                unlike">
+                                                                                <i
+                                                                                    class="fa
+                                                                                    fa-thumbs-down"></i>
+                                                                                Unlike
+                                                                                (<span
+                                                                                    class="count">0</span>)
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <nav class="toolbox
+                                                            toolbox-pagination
+                                                            justify-content-end">
+                                                            <ul
+                                                                class="pagination">
+                                                                <li
+                                                                    class="page-item
+                                                                    disabled">
+                                                                    <a
+                                                                        class="page-link
+                                                                        page-link-prev"
+                                                                        href="#"
+                                                                        aria-label="Previous"
+                                                                        tabindex="-1"
+                                                                        aria-disabled="true">
+                                                                        <i
+                                                                            class="d-icon-arrow-left"></i>Prev
+                                                                    </a>
+                                                                </li>
+                                                                <li
+                                                                    class="page-item
+                                                                    active"
+                                                                    aria-current="page"><a
+                                                                        class="page-link"
+                                                                        href="#">1</a>
+                                                                </li>
+                                                                <li
+                                                                    class="page-item"><a
+                                                                        class="page-link"
+                                                                        href="#">2</a>
+                                                                </li>
+                                                                <li
+                                                                    class="page-item"><a
+                                                                        class="page-link"
+                                                                        href="#">3</a>
+                                                                </li>
+                                                                <li
+                                                                    class="page-item
+                                                                    page-item-dots"><a
+                                                                        class="page-link"
+                                                                        href="#">6</a>
+                                                                </li>
+                                                                <li
+                                                                    class="page-item">
+                                                                    <a
+                                                                        class="page-link
+                                                                        page-link-next"
+                                                                        href="#"
+                                                                        aria-label="Next">
+                                                                        Next<i
+                                                                            class="d-icon-arrow-right"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                                <!-- End Comments -->
+                                                <div
+                                                    class="review-form-section">
+                                                    <div class="review-overlay"></div>
+                                                    <div
+                                                        class="review-form-wrapper">
+                                                        <div
+                                                            class="title-wrapper
+                                                            text-left">
+                                                            <h3 class="title
+                                                                title-simple
+                                                                text-left
+                                                                text-normal">Add
+                                                                a
+                                                                Review
+                                                            </h3>
+                                                            <p>Your email
+                                                                address will not
+                                                                be published.
+                                                                Required fields
+                                                                are
+                                                                marked
+                                                                *
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="rating-form">
+                                                            <label for="rating"
+                                                                class="text-dark">Your
+                                                                rating *
+                                                            </label>
+                                                            <span
+                                                                class="rating-stars
+                                                                selected">
+                                                                <a
+                                                                    class="star-1"
+                                                                    href="#">1</a>
+                                                                <a
+                                                                    class="star-2"
+                                                                    href="#">2</a>
+                                                                <a
+                                                                    class="star-3"
+                                                                    href="#">3</a>
+                                                                <a class="star-4
+                                                                    active"
+                                                                    href="#">4</a>
+                                                                <a
+                                                                    class="star-5"
+                                                                    href="#">5</a>
+                                                            </span>
+
+                                                            <select
+                                                                name="rating"
+                                                                id="rating"
+                                                                required=""
+                                                                style="display:
+                                                                none;">
+                                                                <option
+                                                                    value="">Rate…</option>
+                                                                <option
+                                                                    value="5">Perfect</option>
+                                                                <option
+                                                                    value="4">Good</option>
+                                                                <option
+                                                                    value="3">Average</option>
+                                                                <option
+                                                                    value="2">Not
+                                                                    that bad</option>
+                                                                <option
+                                                                    value="1">Very
+                                                                    poor</option>
+                                                            </select>
+                                                        </div>
+                                                        <form action="#">
+                                                            <textarea
+                                                                id="reply-message"
+                                                                cols="30"
+                                                                rows="6"
+                                                                class="form-control
+                                                                mb-4"
+                                                                placeholder="Comment
+                                                                *"
+                                                                required></textarea>
+                                                            <div
+                                                                class="review-medias">
+                                                                <div
+                                                                    class="file-input
+                                                                    form-control
+                                                                    image-input"
+                                                                    style="background-image:
+                                                                    url(../front/images/product/placeholder.png);">
+                                                                    <div
+                                                                        class="file-input-wrapper">
+                                                                    </div>
+                                                                    <label
+                                                                        class="btn-action
+                                                                        btn-upload"
+                                                                        title="Upload
+                                                                        Media">
+                                                                        <input
+                                                                            type="file"
+                                                                            accept=".png,
+                                                                            .jpg,
+                                                                            .jpeg"
+                                                                            name="riode_comment_medias_image_1">
+                                                                    </label>
+                                                                    <label
+                                                                        class="btn-action
+                                                                        btn-remove"
+                                                                        title="Remove
+                                                                        Media">
+                                                                    </label>
+                                                                </div>
+                                                                <div
+                                                                    class="file-input
+                                                                    form-control
+                                                                    image-input"
+                                                                    style="background-image:
+                                                                    url(../front/images/product/placeholder.png);">
+                                                                    <div
+                                                                        class="file-input-wrapper">
+                                                                    </div>
+                                                                    <label
+                                                                        class="
+                                                                        btn-action
+                                                                        btn-upload"
+                                                                        title="Upload
+                                                                        Media">
+                                                                        <input
+                                                                            type="file"
+                                                                            accept=".png,
+                                                                            .jpg,
+                                                                            .jpeg"
+                                                                            name="riode_comment_medias_image_2">
+                                                                    </label>
+                                                                    <label
+                                                                        class="btn-action
+                                                                        btn-remove"
+                                                                        title="Remove
+                                                                        Media">
+                                                                    </label>
+                                                                </div>
+                                                                <div
+                                                                    class="file-input
+                                                                    form-control
+                                                                    video-input"
+                                                                    style="background-image:
+                                                                    url(../front/images/product/placeholder.png);">
+                                                                    <video
+                                                                        class="file-input-wrapper"
+                                                                        controls=""></video>
+                                                                    <label
+                                                                        class="btn-action
+                                                                        btn-upload"
+                                                                        title="Upload
+                                                                        Media">
+                                                                        <input
+                                                                            type="file"
+                                                                            accept=".avi,
+                                                                            .mp4"
+                                                                            name="riode_comment_medias_video_1">
+                                                                    </label>
+                                                                    <label
+                                                                        class="btn-action
+                                                                        btn-remove"
+                                                                        title="Remove
+                                                                        Media">
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <p>Upload images and
+                                                                videos. Maximum
+                                                                count: 3, size:
+                                                                2MB</p>
+                                                            <button
+                                                                type="submit"
+                                                                class="btn
+                                                                btn-primary
+                                                                btn-rounded">Submit<i
+                                                                    class="d-icon-arrow-right"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!-- End Reply -->
+                                            </div>
+                                        </div>
+                                         <div class="card card-additional">
+                                            <div class="card-header">
+                                                <a href="#collapse1-2"
+                                                    class="expand"><span>À Proximité</span></a>
+                                            </div>
+                                            <div class="card-body collapsed"
+                                                id="collapse1-2">
+                                                <ul class="list-none">
+                                                    <li><label>Brands:</label>
+                                                        <p>SkillStar, SLS</p>
+                                                    </li>
+                                                    <li><label>Color:</label>
+                                                        <p>Blue, Brown</p>
+                                                    </li>
+                                                    <li><label>Size:</label>
+                                                        <p>Large, Medium, Small</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--section class="best-section mt-7 mb-4">
+                            <h2 class="title">
+                                Best Selling
+                            </h2>
+                            <div class="owl-carousel owl-theme owl-nav-top
+                                owl-nav-arrow row cols-lg-4 cols-md-3 cols-2"
+                                data-owl-options="{
+                                'nav': true,
+                                'dots': false,
+                                'loop': true,
+                                'margin': 20,
+                                'autoplay': false,
+                                'autoplayTimeout': 5000,
+                                'responsive': {
+                                '0': {
+                                'items': 2
+                                },
+                                '768': {
+                                'items': 3
+                                },
+                                '992': {
+                                'items': 4,
+                                'loop': false
+                                }
+                                }
+                                }">
+                                <div class="product text-center
+                                    product-with-qty">
+                                    <figure class="product-media">
+                                        <a href="demo-food3-product.html">
+                                            <img
+                                                src="../front/images/demos/demo-food3/product/1-280x220.jpg"
+                                                alt="product"
+                                                width="280" height="220">
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon
+                                                btn-wishlist" title="Add to
+                                                wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product
+                                                btn-quickview" title="Quick
+                                                View">Quick
+                                                View</a>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h3 class="product-name">
+                                            <a href="demo-food3-product.html">Hamburger</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$39</ins><del
+                                                class="old-price">$95</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings"
+                                                    style="width: 100%"></span>
+                                            </div>
+                                            <a href="demo-food3-product.html"
+                                                class="rating-reviews">( 12
+                                                reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <div class="product-quantity">
+                                                <button title="calculate"
+                                                    class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input title="input"
+                                                    class="quantity
+                                                    form-control" type="number"
+                                                    min="1"
+                                                    max="1000000">
+                                                <button title="calculate"
+                                                    class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </div>
+                                            <a href="#" class="btn-product
+                                                btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal"
+                                                title="Add to cart"><i
+                                                    class="d-icon-bag"></i><span>Add
+                                                    to cart</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product text-center
+                                    product-with-qty">
+                                    <figure class="product-media">
+                                        <a href="demo-food3-product.html">
+                                            <img
+                                                src="../front/images/demos/demo-food3/product/2-280x220.jpg"
+                                                alt="product"
+                                                width="280" height="220">
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon
+                                                btn-wishlist" title="Add to
+                                                wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product
+                                                btn-quickview" title="Quick
+                                                View">Quick
+                                                View</a>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h3 class="product-name">
+                                            <a href="demo-food3-product.html">Crown
+                                                Daisy</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$39</ins><del
+                                                class="old-price">$95</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings"
+                                                    style="width: 100%"></span>
+                                            </div>
+                                            <a href="demo-food3-product.html"
+                                                class="rating-reviews">( 12
+                                                reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <div class="product-quantity">
+                                                <button title="calculate"
+                                                    class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input title="input"
+                                                    class="quantity
+                                                    form-control" type="number"
+                                                    min="1"
+                                                    max="1000000">
+                                                <button title="calculate"
+                                                    class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </div>
+                                            <a href="#" class="btn-product
+                                                btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal"
+                                                title="Add to cart"><i
+                                                    class="d-icon-bag"></i><span>Add
+                                                    to cart</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product text-center
+                                    product-with-qty">
+                                    <figure class="product-media">
+                                        <a href="demo-food3-product.html">
+                                            <img
+                                                src="../front/images/demos/demo-food3/product/3-280x220.jpg"
+                                                alt="product"
+                                                width="280" height="220">
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon
+                                                btn-wishlist" title="Add to
+                                                wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product
+                                                btn-quickview" title="Quick
+                                                View">Quick
+                                                View</a>
+                                        </div>
+
+                                    </figure>
+                                    <div class="product-details">
+                                        <h3 class="product-name">
+                                            <a href="demo-food3-product.html">Slice
+                                                Meat</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$39</ins><del
+                                                class="old-price">$95</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings"
+                                                    style="width: 100%"></span>
+                                            </div>
+                                            <a href="demo-food3-product.html"
+                                                class="rating-reviews">( 12
+                                                reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <div class="product-quantity">
+                                                <button title="calculate"
+                                                    class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input title="input"
+                                                    class="quantity
+                                                    form-control" type="number"
+                                                    min="1"
+                                                    max="1000000">
+                                                <button title="calculate"
+                                                    class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </div>
+                                            <a href="#" class="btn-product
+                                                btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal"
+                                                title="Add to cart"><i
+                                                    class="d-icon-bag"></i><span>Add
+                                                    to cart</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product text-center
+                                    product-with-qty">
+                                    <figure class="product-media">
+                                        <a href="demo-food3-product.html">
+                                            <img
+                                                src="../front/images/demos/demo-food3/product/4-280x220.jpg"
+                                                alt="product"
+                                                width="280" height="220">
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon
+                                                btn-wishlist" title="Add to
+                                                wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product
+                                                btn-quickview" title="Quick
+                                                View">Quick
+                                                View</a>
+                                        </div>
+
+                                    </figure>
+                                    <div class="product-details">
+                                        <h3 class="product-name">
+                                            <a href="demo-food3-product.html">Potato
+                                                Crisp</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$39</ins><del
+                                                class="old-price">$95</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings"
+                                                    style="width: 100%"></span>
+                                            </div>
+                                            <a href="demo-food3-product.html"
+                                                class="rating-reviews">( 12
+                                                reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <div class="product-quantity">
+                                                <button title="calculate"
+                                                    class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input title="input"
+                                                    class="quantity
+                                                    form-control" type="number"
+                                                    min="1"
+                                                    max="1000000">
+                                                <button title="calculate"
+                                                    class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </div>
+                                            <a href="#" class="btn-product
+                                                btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal"
+                                                title="Add to cart"><i
+                                                    class="d-icon-bag"></i><span>Add
+                                                    to cart</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product text-center
+                                    product-with-qty">
+                                    <figure class="product-media">
+                                        <a href="demo-food3-product.html">
+                                            <img
+                                                src="../front/images/demos/demo-food3/product/1-280x220.jpg"
+                                                alt="product"
+                                                width="280" height="220">
+                                        </a>
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon
+                                                btn-wishlist" title="Add to
+                                                wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product
+                                                btn-quickview" title="Quick
+                                                View">Quick
+                                                View</a>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <h3 class="product-name">
+                                            <a href="demo-food3-product.html">Hamburger</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$39</ins><del
+                                                class="old-price">$95</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings"
+                                                    style="width: 100%"></span>
+                                            </div>
+                                            <a href="demo-food3-product.html"
+                                                class="rating-reviews">( 12
+                                                reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <div class="product-quantity">
+                                                <button title="calculate"
+                                                    class="quantity-minus
+                                                    d-icon-minus"></button>
+                                                <input title="input"
+                                                    class="quantity
+                                                    form-control" type="number"
+                                                    min="1"
+                                                    max="1000000">
+                                                <button title="calculate"
+                                                    class="quantity-plus
+                                                    d-icon-plus"></button>
+                                            </div>
+                                            <a href="#" class="btn-product
+                                                btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal"
+                                                title="Add to cart"><i
+                                                    class="d-icon-bag"></i><span>Add
+                                                    to cart</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </!--section-->
+                        <!-- End best-section -->
+                    </div>
+                </div>
+
+            </main>
+{% endblock %}
