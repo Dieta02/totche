@@ -44,8 +44,10 @@ class HomeController extends AbstractController
     #[Route('/galerie', name: 'app_gallery')]
     public function galerie(SitesRepository $sitesRepository): Response
     {
+        $sites = $sitesRepository->findAll();
+        shuffle($sites);
         return $this->render('frontend/gallery.html.twig', [
-            'sites' => $sitesRepository->findAll(),
+            'sites' => $sites,
             'controller_name' => 'HomeController',
         ]);
     }
