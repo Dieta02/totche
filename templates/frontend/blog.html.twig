@@ -1,0 +1,99 @@
+{% extends 'frontBase.html.twig' %}
+{% block main %}
+<main class="main food3-shop">
+    <div class="page-header"
+        style="background-image: url(carousel-5.jpg); height: 40rem; opacity:.7">
+        <h1 class="page-title text-white font-weight-normal font-secondary ls-m">BLOGS</h1>
+        <ul class="breadcrumb pt-1">
+            <li><a href={{path('app_home')}} title="breadcrumb"><i class="d-icon-home"></i></a>
+            </li>
+            <li class="font-weight-semi-bold mr-1 ml-1" style="opacity: .4;"><i class="d-icon-angle-right"></i>
+            </li>
+            <li style="opacity: .6;">Blogs</li>
+        </ul>
+    </div>
+    <div class="page-content mb-10 pb-3 mt-10">
+        <div class="row col-12 ml-10 mr-10">
+            <div class="col-lg-9">
+            {% for blog in blogs %}
+              
+            <div class="card row mb-5">
+                  <figure class="col-sm-6">
+                    <a href="">
+                      <img
+                        src={{ '/uploads/pictures/blogs/' ~ blog.picture }}
+                        width="780"
+                        height="600"
+                        alt="post"
+                        style="width:780px;height:320px"
+                      />
+                    </a>
+                  </figure>
+                  <div class="col-sm-6 pl-5 pr-5 pt-10 pb-10">
+                    <h2 class="post-title text-black">
+                      <a href="post-single.html">{{blog.title}}</a>
+                    </h2>
+                    <p class="post-content">
+                      {{blog.content}}
+                    </p>
+                    <h6 class="text-muted text-grey">{{blog.publicationDate  | date('d-m-Y')}}</h6>
+                    <a
+                      href="post-single.html"
+                      class="btn btn-link btn-primary"
+                      ><button class="btn btn-primary" style="padding:1rem 1rem;">Read more<i class="d-icon-arrow-right"></i></button>
+                    </a>
+                  </div>
+            </div>
+              {% endfor %}
+            </div>
+
+
+            <div class="col-lg-3" >
+             <div class="">
+                  <h5 class="ls-m text-black font-weight-bold">Recent Posts</h5>
+
+                  <div class="y-gap-20">
+
+                    <div class="d-flex items-center">
+                      <div class="image mr-15">
+                        <img src="img/blog-list/1.png" alt="image">
+                      </div>
+
+                      <div class="">
+                        <h5 class="text-15 lh-15 fw-500">Find the Right Learning Path for your</h5>
+                        <div class="text-13 lh-1 mt-5">April 13, 2022</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <hr/>
+                <div class="">
+                  <h5 class="ls-m text-black font-weight-bold">Tags</h5>
+
+                  <div class="">
+
+                    <div class="">
+                      <a class="text-11 fw-500 text-dark-1" href="#">Courses</a>
+                    </div>
+
+                    <div class="s">
+                      <a class="text-11 fw-500 text-dark-1" href="#">Learn</a>
+                    </div>
+
+                    <div class="">
+                      <a class="text-11 fw-500 text-dark-1" href="#">Online</a>
+                    </div>
+
+                    <div class="">
+                      <a class="text-11 fw-500 text-dark-1" href="#">Education</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+                
+
+        </div>         
+    </div>
+</main>
+{% endblock %}

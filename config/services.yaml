@@ -6,6 +6,10 @@
 parameters:
   brochures_directory: "%kernel.project_dir%/public/uploads/pictures/sites"
   brochures2_directory: "%kernel.project_dir%/public/uploads/pictures/guides"
+  brochures3_directory: "%kernel.project_dir%/public/uploads/pictures/categories"
+  brochures4_directory: "%kernel.project_dir%/public/uploads/pictures/blogs"
+
+
 services:
   # default configuration for services in *this* file
   _defaults:

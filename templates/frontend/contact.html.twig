@@ -1,0 +1,68 @@
+{% extends 'frontBase.html.twig' %}
+{% block main %}
+<main class="main food3-shop">
+    <div class="page-header"
+        style="background-image: url(front/images/page-header/contact-us.jpg); height: 40rem;">
+        <h1 class="page-title text-white font-weight-normal font-secondary ls-m">Contactez-nous</h1>
+        <ul class="breadcrumb pt-1">
+            <li><a href={{path('app_home')}} title="breadcrumb"><i class="d-icon-home"></i></a>
+            </li>
+            <li class="font-weight-semi-bold mr-1 ml-1" style="opacity: .4;"><i class="d-icon-angle-right"></i>
+            </li>
+            <li style="opacity: .6;">Contactez-nous</li>
+        </ul>
+    </div>
+    <!--div class="page-content mb-10 pb-3 mt-10"-->
+     <div class="page-content mt-10 pt-7">
+                <section class="contact-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-6 ls-m mb-4">
+                                <div class="grey-section d-flex align-items-center h-100">
+                                    <div>
+                                        <h5 class="mb-2 text-black text-capitalize">Quartier Général</h5>
+                                        <p>Cotonou ,Bénin</p>
+
+                                        <h5 class="mb-2 text-black text-capitalize">Numéro de Téléphone</h5>
+                                        <p>
+                                            <a href="tel:#">(229) 99 99 99 99</a><br>
+                                            <a href="tel:#">(229) 99 99 99 99</a>
+                                        </p>
+
+                                        <h5 class="mb-2  text-black text-capitalize">Support</h5>
+                                        <p class="mb-4">
+                                            <a href="#">support@totche.com</a><br>
+                                            <a href="#">help@totche.com</a><br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-8 col-sm-6 d-flex align-items-center mb-4">
+                                <div class="w-100">
+                                    <form class="pl-lg-2" action="#">
+                                        <h4 class="ls-m text-black font-weight-bold"> Connectons-nous !</h4>
+                                        <p> Votre adresse email ne sera pas publiée. Les champs requis sont indiqués *</p>
+                                        <div class="row mb-2">
+                                            <div class="col-12 mb-4">
+                                                <textarea class="form-control text-black" required
+                                                    placeholder="Comment *"></textarea>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <input class="form-control text-black" type="text" placeholder="Name *" required>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <input class="form-control text-black" type="email" placeholder="Email *" required>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-rounded">Poster un Commentaire<i
+                                                class="d-icon-arrow-right"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                       
+    </div>
+</main>
+{% endblock %}

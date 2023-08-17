@@ -23,6 +23,7 @@
         <link href="../assets/plugins/NotificationStyles/css/ns-style-attached.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/plugins/NotificationStyles/css/ns-style-bar.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/plugins/NotificationStyles/css/ns-style-other.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/plugins/summernote/summernote.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/plugins/toastr/toastr.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="../font-awesome.min.css" type="text/css">
@@ -398,6 +399,8 @@
                         </li>
                         <li class=""><a href={{path('app_guides_index')}} class="material-ripple"><i class="material-icons">home</i> Guides</a></li>
                         <li class=""><a href={{path('app_sites_index')}} class="material-ripple"><i class="material-icons">home</i> Sites</a></li>
+                        <li class=""><a href={{path('app_blogs_index')}} class="material-ripple"><i class="material-icons">home</i> Blogs</a></li>
+
 
 
                     </ul>
@@ -437,7 +440,20 @@
         <script src="../assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script src="../assets/plugins/toastr/toastr.min.js"></script>
         <script src="../assets/plugins/dropzone/dropzone.min.js"></script>
+        <script src="../assets/plugins/summernote/summernote.min.js"></script>
         <!-- START THEME LABEL SCRIPT -->
+         <script>
+            $(document).ready(function () {
+                "use strict"; // Start of use strict
+                //summernote
+                $('#summernote').summernote({
+                    height: 300, // set editor height
+                    minHeight: null, // set minimum height of editor
+                    maxHeight: null, // set maximum height of editor
+                    focus: true                  // set focus to editable area after initializing summernote
+                });
+            });
+        </script>
         <script>
             $(document).ready(function () {
 
@@ -462,69 +478,6 @@
                 });
 
             });
-        </script>
-        <script>
-         "use strict"; // Start of use strict
-
-            (function () {
-                function11();
-                function8();
-            })();
-             function function8() {
-
-                var bttn = document.getElementById('exploader');
-
-                // make sure..
-                bttn.disabled = false;
-
-                bttn.addEventListener('click', function () {
-
-                    // create the notification
-                    var notification = new NotificationFx({
-                        message: '<span class="icon icon-settings"></span><p>Your preferences have been saved successfully. See all your settings in your <a href="#">profile overview</a>.</p>',
-                        layout: 'bar',
-                        effect: 'exploader',
-                        type: 'notice', // notice, warning or error
-                        onClose: function () {
-                            bttn.disabled = false;
-                        }
-                    });
-
-                    // show the notification
-                    notification.show();
-
-                    // disable the button (for demo purposes only)
-                    this.disabled = true;
-                });
-            }
-
-               function function11() {
-                var bttn = document.getElementById('boxspinner');
-
-                // make sure..
-                bttn.disabled = false;
-
-                bttn.addEventListener('click', function () {
-                    // create the notification
-                    var notification = new NotificationFx({
-                        message: '<p><span class="glyphicon glyphicon-ok"></span><b>&nbsp;Enregistrement réussi</b></p>',
-                        layout: 'attached',
-                        effect: 'boxspinner',
-                        ttl: 5000,
-                        type: 'notice', // notice, warning or error
-                        onClose: function () {
-                            bttn.disabled = false;
-                        }
-                    });
-
-                    // show the notification
-                    notification.show();
-
-                    // disable the button (for demo purposes only)
-                    this.disabled = true;
-                });
-
-            }
         </script>
     </body>
 </html>

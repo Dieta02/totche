@@ -1,6 +1,6 @@
 {% extends 'pageBase.html.twig' %}
 
-{% block title %}Catégories{% endblock %}
+{% block title %}Blogs{% endblock %}
 
 {% block content %}
   <div class="content-header">
@@ -8,11 +8,11 @@
                             <i class="pe-7s-tools"></i>
                         </div>
                         <div class="header-title">
-                            <h1>Catégories de Sites Touristiques</h1>
-                            <small>Liste des categories touristiques enregistrés</small>
+                            <h1>Ecrire un blog</h1>
+                            <small>Ecrire un blog</small>
                             <ol class="breadcrumb">
                                 <li><a href=index.html><i class="pe-7s-home"></i> Home</a></li>
-                                <li class="active">Catégories</li>
+                                <li class="active">Blogs</li>
                             </ol>
                         </div>
                     </div>
@@ -22,16 +22,16 @@
                             <div class="panel panel-bd lobidrag">
                                 <div class="panel-heading">
                                     <div class="panel-title">
-                                        <h4>Enregistrer une Catégorie</h4>
+                                        <h4>Ecrire un Blog</h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">
                                     <p></p>
-                                     <form method="post" action={{path('app_categories_index')}} class="row" enctype="multipart/form-data">
+                                     <form method="post" action={{path('app_blogs_index')}} class="row" enctype="multipart/form-data">
                                    
 <div class="form-group col-sm-3">
-    <label for="exampleSelect1">Nom</label>
-<input type="text" class="form-control" placeholder="Catégorie" name="name" id="categoriesName"/>
+    <label for="exampleSelect1">Title</label>
+<input type="text" class="form-control" placeholder="Titre de l'article" name="title" id="title"/>
 
 
     <small id="emailHelp" class="text-muted">Nom</small>
@@ -45,7 +45,9 @@
 
     <small id="emailHelp" class="text-muted">Ajoutez une image</small>
 </div>
-
+<div class="col-sm-12">
+<textarea name="content" id="summernote"></textarea>
+</div>
 <div class="row col-sm-12" id="button">
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 </div>
@@ -59,33 +61,44 @@
                             <div class="panel panel-bd lobidrag">
                                 <div class="panel-heading">
                                     <div class="panel-title">
-                                        <h4>Catégories</h4>
+                                        <h4>Blogs</h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">
                                     <p class="m-b-15">
-                                        <code></code>.</p>
+                                        <code></code></p>
                                     <div class="table-responsive">
                                         <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                <th>Nom</th>
+                <th>Titre</th>
+                <th>Date de publication</th>
+
+                <th>Image</th>
+
                 <th style="width:max-content;">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               {% for categorie in categories %}
+                                               {% for blog in blogs %}
             <tr>
-                <td>{{ categorie.id }}</td>
-                <td>{{ categorie.name }}</td>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.title }}</td>
+                <td>{{ blog.publicationDate | date('d-m-Y') }}</td>
+
+                <td>
+                <a data-lightbox="portfolio" href={{ '/uploads/pictures/blogs/' ~ blog.picture }}>
+                    <img src={{ '/uploads/pictures/blogs/' ~ blog.picture }} alt="" sizes="" style="width:25px;height:25px"></a>
+                    
+                </td>
  <td style="display:flex;">
         
-                   <a  href="{{ path('app_categories_edit', {'id': categorie.id}) }}"> <button type="button" class="btn btn-labeled btn-warning">
+                   <a  href="{{ path('app_blogs_edit', {'id': blog.id}) }}"> <button type="button" class="btn btn-labeled btn-warning">
                                         <span class="btn-label"><i class="glyphicon glyphicon-pencil"></i></span>Modifier
                                     </button> </a>
-                    <form method="post" action="{{ path('app_categories_delete', {'id': categorie.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                    <form method="post" action="{{ path('app_blogs_delete', {'id': blog.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer cet enregistrement ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ blog.id) }}">
    <button  type="submit" class="btn btn-labeled btn-danger">
                                         <span class="btn-label"><i class="glyphicon glyphicon-trash"></i></span>Supprimer
                                     </button>
@@ -94,7 +107,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">Aucun enregistrement</td>
+                <td colspan="3">Aucun enregistrement</td>
             </tr>
         {% endfor %}
                                             </tbody>
@@ -106,4 +119,6 @@
                    </div>
    
 {% endblock %}
+
+
 

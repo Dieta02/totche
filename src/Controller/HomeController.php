@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\BlogsRepository;
 use App\Repository\CategoriesRepository;
 use App\Repository\GuidesRepository;
 use App\Repository\SitesRepository;
@@ -56,6 +57,21 @@ class HomeController extends AbstractController
     {
         return $this->render('frontend/guide.html.twig', [
             'guides' => $guidesRepository->findAll(),
+            'controller_name' => 'HomeController',
+        ]);
+    }
+     #[Route('/blog', name: 'app_blogs')]
+    public function blogs(BlogsRepository $blogsRepository): Response
+    {
+        return $this->render('frontend/blog.html.twig', [
+            'blogs' => $blogsRepository->findAll(),
+            'controller_name' => 'HomeController',
+        ]);
+    }
+     #[Route('/contact', name: 'app_contact')]
+    public function contact(BlogsRepository $blogsRepository): Response
+    {
+        return $this->render('frontend/contact.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }

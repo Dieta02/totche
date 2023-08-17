@@ -88,6 +88,7 @@
     <link rel="stylesheet" type="text/css" href="../front/css/demo-food3.min.css" />
     <link href="../assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="../assets/lightbox/css/lightbox.css" rel=stylesheet type="text/css"/>
+    {% block stylesheets %}{% endblock %}
 
   </head>
 
@@ -113,11 +114,14 @@
                   <li>
                     <a href={{path('app_guideT')}}>Guides Touristiques</a>
                   </li>
+                   <li>
+            <a href={{path('app_blogs')}}>Blogs</a>
+          </li>
                   <li>
                     <a href="about-us.html">A Propos</a>
                   </li>
                   <li>
-                    <a href="contact-us.html">Contact</a>
+                    <a href={{path('app_contact')}}>Contact</a>
                   </li>
                 </ul>
               </nav>
@@ -477,10 +481,13 @@
             <a href={{path('app_home')}}>Guides Touristiques</a>
           </li>
           <li>
+            <a href={{path('app_blogs')}}>Blogs</a>
+          </li>
+          <li>
             <a href={{path('app_home')}}>A propos</a>
           </li>
           <li>
-            <a href={{path('app_home')}}>Contact</a>
+            <a href={{path('app_contact')}}>Contact</a>
           </li>
         </ul>
         <!-- End MobileMenu -->
@@ -584,5 +591,7 @@
 <script src="../assets/lightbox/js/lightbox.min.js"></script>
     <!-- Main JS File -->
     <script src="../front/js/main.min.js"></script>
+
+  {% block javascripts %}{% endblock %}
   </body>
 </html>
