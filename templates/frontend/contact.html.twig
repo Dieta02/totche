@@ -39,22 +39,22 @@
                             </div>
                             <div class="col-lg-9 col-md-8 col-sm-6 d-flex align-items-center mb-4">
                                 <div class="w-100">
-                                    <form class="pl-lg-2" action="#">
+                                    <form class="pl-lg-2" action={{path('app_contact')}} method="post">
                                         <h4 class="ls-m text-black font-weight-bold"> Connectons-nous !</h4>
                                         <p> Votre adresse email ne sera pas publiée. Les champs requis sont indiqués *</p>
                                         <div class="row mb-2">
                                             <div class="col-12 mb-4">
                                                 <textarea class="form-control text-black" required
-                                                    placeholder="Comment *"></textarea>
+                                                    placeholder="Message *" name="message"></textarea>
                                             </div>
                                             <div class="col-md-6 mb-4">
-                                                <input class="form-control text-black" type="text" placeholder="Name *" required>
+                                                <input class="form-control text-black" name="name" type="text" placeholder="Nom *" required>
                                             </div>
                                             <div class="col-md-6 mb-4">
-                                                <input class="form-control text-black" type="email" placeholder="Email *" required>
+                                                <input class="form-control text-black" name="email" type="email" placeholder="Email *" required>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary btn-rounded">Poster un Commentaire<i
+                                        <button class="btn btn-primary btn-rounded">Envoyer un message<i
                                                 class="d-icon-arrow-right"></i></button>
                                     </form>
                                 </div>

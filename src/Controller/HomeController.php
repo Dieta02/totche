@@ -7,7 +7,11 @@ use App\Repository\CategoriesRepository;
 use App\Repository\GuidesRepository;
 use App\Repository\SitesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -68,9 +72,25 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-     #[Route('/contact', name: 'app_contact')]
-    public function contact(BlogsRepository $blogsRepository): Response
+     #[Route('/blog/{id}', name: 'app_blog_single')]
+    public function singleBlogs($id,BlogsRepository $blogsRepository): Response
     {
+        return $this->render('frontend/blog-single.html.twig', [
+            'blog' => $blogsRepository->findBy(['id'=>$id]),
+            'controller_name' => 'HomeController',
+        ]);
+    }
+     #[Route('/contact', name: 'app_contact',methods: ['GET', 'POST'])]
+    public function contact(Request $request,MailerInterface $mailer): Response
+    {
+        if($request->request->count() > 0){
+            $email=(new Email())
+            ->from(new Address($request->request->get('email'),$request->request->get('name')))
+            ->to('support@totche.com')
+            ->subject('Contact Message')
+            ->html($request->request->get('message'));
+            $mailer->send($email);
+        }
         return $this->render('frontend/contact.html.twig', [
             'controller_name' => 'HomeController',
         ]);

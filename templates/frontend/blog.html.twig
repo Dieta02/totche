@@ -19,7 +19,7 @@
               
             <div class="card row mb-5">
                   <figure class="col-sm-6">
-                    <a href="">
+                    <a>
                       <img
                         src={{ '/uploads/pictures/blogs/' ~ blog.picture }}
                         width="780"
@@ -31,14 +31,14 @@
                   </figure>
                   <div class="col-sm-6 pl-5 pr-5 pt-10 pb-10">
                     <h2 class="post-title text-black">
-                      <a href="post-single.html">{{blog.title}}</a>
+                      <a>{{blog.title}}</a>
                     </h2>
                     <p class="post-content">
                       {{blog.content}}
                     </p>
                     <h6 class="text-muted text-grey">{{blog.publicationDate  | date('d-m-Y')}}</h6>
                     <a
-                      href="post-single.html"
+                      href={{path('app_blog_single',{'id': blog.id})}}
                       class="btn btn-link btn-primary"
                       ><button class="btn btn-primary" style="padding:1rem 1rem;">Read more<i class="d-icon-arrow-right"></i></button>
                     </a>
